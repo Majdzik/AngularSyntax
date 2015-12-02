@@ -14,37 +14,32 @@
             <input type="search" name="name" value=" " />
             <table>
                 <thead>
-                <tr>
-                    <th ng-repeat="(key,value) in m.items[0]" ng-click="$parent.reverse=!reverse;$parent.order = key">
-                        <span ng-bind="key" ng-class="{sortorder:order==key,reverse:order==key&&reverse}"></span>
-                    </th>
-                </tr>
+                    <tr>
+                        <th ng-repeat="(key,value) in m.items[0]" ng-click="$parent.reverse=!reverse;$parent.order=key" ng-bind="key" ng-class="{sortorder:order==key,reverse:order==key&&reverse}"></th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="item in m.items | orderBy: reverse?order:'-'+order">
-                    <td ng-bind="item.id"></td>
-                    <td ng-bind="item.name"></td>
-                    <td ng-bind="item.number"></td>
-                    <td><input type="radio" ng-model="$parent.currentItem" ng-value="item" ng-checked="item.radio = (currentItem === item)"/></td>
-                    <td><input type="radio" ng-model="$parent.currentItem1" ng-value="item" ng-checked="item.radio1 = (currentItem1 === item)"/></td>
-                    <td><input type="checkbox" ng-model="item.check" value=""/></td>
-                </tr>
+                    <tr ng-repeat="item in m.items | orderBy: reverse?order:'-'+order">
+                        <td ng-bind="item.id"></td>
+                        <td ng-bind="item.name"></td>
+                        <td ng-bind="item.number"></td>
+                        <td><input type="radio" ng-model="$parent.currentItem" ng-value="item" ng-checked="item.radio = (currentItem === item)" /></td>
+                        <td><input type="radio" ng-model="$parent.currentItem1" ng-value="item" ng-checked="item.radio1 = (currentItem1 === item)" /></td>
+                        <td><input type="checkbox" ng-model="item.check" value="" /></td>
+                    </tr>
                 </tbody>
             </table>
         </form>
         <pre>
-<code>
-            {{m.items|json}}
-</code>     
-                     currentItem:   <code>
-{{currentItem|json}}
-</code>     
-            reverse:<code>{{reverse|json}}</code>
-order:
-            <code>{{order|json}}</code>
-
+items:
+<code>{{m.items|json}}</code>
+<hr />     
+currentItem:
+<code>{{currentItem|json}}</code>
+<hr />
+reverse:<code>{{reverse|json}}</code>
+order:<code>{{order|json}}</code>
 </pre>
-        
     </div>
     @*<div class="col-md-4" ng-controller="myCtrl">
 
@@ -81,7 +76,7 @@ order:
                 }
 
                 vm.items = [
-                    { id: '1158AC91-9600-428F-BC0D-EE6B15EA30DE', name: 'Filip', number: '0723283264', radio:false },
+                    { id: '1158AC91-9600-428F-BC0D-EE6B15EA30DE', name: 'Filip', number: '0723283264', radio: false },
                     { id: '2158AC91-9600-428F-BC0D-EE6B15EA30DE', name: 'Jan', number: '0723283265' },
                     { id: '3158AC91-9600-428F-BC0D-EE6B15EA30DE', name: 'Jessica', number: '0723283266' }
                 ];
