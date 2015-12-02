@@ -16,8 +16,7 @@
                 <thead>
                 <tr>
                     <th ng-repeat="(key,value) in m.items[0]" ng-click="$parent.reverse=!reverse;$parent.order = key">
-                        <x ng-bind="key"></x>
-                        <span class="sortorder" ng-show="order === key" ng-class="{reverse:reverse}"></span>
+                        <span ng-bind="key" ng-class="{sortorder:order==key,reverse:order==key&&reverse}"></span>
                     </th>
                 </tr>
                 </thead>
