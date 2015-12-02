@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4" ng-controller="mainController as m">
+        <form>
+            <input type="search" name="name" value=" " />
+            <table>
+                <thead>
+                <tr>
+                    <th ng-repeat="(key,value) in m.items[0]" ng-click="$parent.reverse=!reverse;$parent.order = key">
+                        <x ng-bind="key"></x>
+                        <span class="sortorder" ng-show="order === key" ng-class="{reverse:reverse}"></span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in m.items | orderBy: reverse?order:'-'+order">
+                    <td ng-bind="item.id"></td>
+                    <td ng-bind="item.name"></td>
+                    <td ng-bind="item.number"></td>
+                    <td><input type="radio" ng-model="$parent.currentItem" ng-value="item" ng-checked="item.radio = (currentItem === item)"/></td>
+                    <td><input type="radio" ng-model="$parent.currentItem1" ng-value="item" ng-checked="item.radio1 = (currentItem1 === item)"/></td>
+                    <td><input type="checkbox" ng-model="item.check" value=""/></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+        <pre>
+<code>
+            {{m.items|json}}
+</code>     
+                     currentItem:   <code>
+{{currentItem|json}}
+</code>     
+            reverse:<code>{{reverse|json}}</code>
+order:
+            <code>{{order|json}}</code>
+
+</pre>
+        
+    </div>
+    @*<div class="col-md-4" ng-controller="myCtrl">
+
+            First Name: <input type="text" ng-model="firstName"><br>
+            Last Name: <input type="text" ng-model="lastName"><br>
+            <br>
+            Full Name: {{firstName + " " + lastName}}
+
+        </div>*@
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        //var app = angular.module('myApp', []);
+        //app.controller('myCtrl', function($scope) {
+        //    $scope.firstName= "John";
+        //    $scope.lastName= "Doe";
+        //});
+
+        (function () {
+            'use strict';
+            var app = angular.module('myApp', []);
+            var controllerId = 'mainController';
+            angular.module('myApp').controller(controllerId, ['$scope', mainController]);
+            function mainController($scope) {
+                var vm = this;
+                vm.activate = activate;
+                function activate() {
+                }
+
+                vm.items = [
+                    { id: '1158AC91-9600-428F-BC0D-EE6B15EA30DE', name: 'Filip', number: '0723283264', radio:false },
+                    { id: '2158AC91-9600-428F-BC0D-EE6B15EA30DE', name: 'Jan', number: '0723283265' },
+                    { id: '3158AC91-9600-428F-BC0D-EE6B15EA30DE', name: 'Jessica', number: '0723283266' }
+                ];
+                //#region Internal Methods
+                //#endregion
+            }
+        })();
+    </script>
+
+}
