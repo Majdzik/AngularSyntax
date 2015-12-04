@@ -9,7 +9,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4" ng-controller="mainController as m">
+    <div class="col-md-12" ng-controller="mainController as m">
         <form>
             <input type="search" name="name" value=" " />
             <table>
@@ -25,12 +25,16 @@
                         <td ng-bind="item.number"></td>
                         <td><input type="radio" ng-model="$parent.currentItem" ng-value="item" ng-checked="item.radio = (currentItem === item)" /></td>
                         <td><input type="radio" ng-model="$parent.currentItem1" ng-value="item" ng-checked="item.radio1 = (currentItem1 === item)" /></td>
-                        <td><input type="checkbox" ng-model="item.check" value="" /></td>
+                        <td><input type="checkbox" ng-model="item.check" value=""/></td>
+                        @*<td><select  name="mySelect" id="mySelect" ng-options="option.text for option in m.options track by option.nid"  ng-model="$parent.selectedOption"></select></td>*@
                     </tr>
                 </tbody>
             </table>
         </form>
-        <pre>
+        <pre>  
+options:
+<code>{{m.filip|json}}</code>
+
 items:
 <code>{{m.items|json}}</code>
 <hr />     

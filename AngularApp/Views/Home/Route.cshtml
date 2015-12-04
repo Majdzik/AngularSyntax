@@ -1,0 +1,50 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Route";
+}
+
+<h2>Route</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Controller</th>
+            <th></th>
+            <th>Action</th>
+            <th>Attributes</th>
+            <th>ReturnType</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Controller
+
+
+            </td>
+            <td>/</td>
+            <td>@Html.ActionLink((string)item.Action, (string)item.Action, (string)item.Controller)</td>
+            <td>@item.Attributes </td>
+            <td>@item.ReturnType</td>
+        </tr>
+    }
+</table>
+
+<code>
+    <pre>
+    $routeProvider
+    @foreach (var item in Model)
+    {
+<pre>
+<code>
+.when('/@item.Action',{
+templateUrl: '/@item.Controller/@item.Action',
+controller: '@(item.Controller)Controller',})
+</code></pre>
+        @*@item.Controller
+        @item.Action
+        @item.Attributes
+        @item.ReturnType*@
+    }
+</pre>
+</code>
