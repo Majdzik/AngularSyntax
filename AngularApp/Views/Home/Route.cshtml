@@ -31,20 +31,19 @@
 </table>
 
 <code>
-    <pre>
+   
     $routeProvider
     @foreach (var item in Model)
     {
-<pre>
-<code>
-.when('/@item.Action',{
-templateUrl: '/@item.Controller/@item.Action',
-controller: '@(item.Controller)Controller',})
-</code></pre>
+        <p>
+            .when('/@item.Action',{
+            <br>templateUrl: '/@item.Controller/@item.Action',
+            <br>controller: '@(item.Controller)Controller',})
+        </p>
         @*@item.Controller
         @item.Action
         @item.Attributes
         @item.ReturnType*@
     }
-</pre>
+
 </code>
