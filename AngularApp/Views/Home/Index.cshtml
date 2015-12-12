@@ -10,7 +10,7 @@
 
 <div class="row">
     <div class="col-md-12" ng-controller="mainController as m">
-        <form>
+        <form name="myForm">
             <input type="search" name="name" value=" " />
             <table>
                 <thead>
@@ -19,11 +19,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in m.items | orderBy: reverse?order:'-'+order">
-                        <td ng-bind="item.id"></td>
-                        <td ng-bind="item.name"></td>
-                        <td ng-bind="item.number"></td>
-                        <td><input type="radio" ng-model="$parent.currentItem" ng-value="item" ng-checked="item.radio = (currentItem === item)" /></td>
+                    <tr ng-repeat="item in m.items track by item.id | orderBy: reverse?order:'-'+order">
+                        <td>
+                           <span ng-bind="::item.id"></span><br>
+                            <span ng-bind="item.id"></span><br>
+                        
+                            <input type="text" ng-model="item.id1" ng-value="::item.id"/><br> 
+                            <input type="text" ng-model="item.id" ng-value="item.id"/><br>
+                        </td>
+                        <td ng-bind="::item.name"></td>
+                        <td ng-bind="::item.number"></td>
+                        <td><input name="rone" type="radio" ng-model="$parent.currentItem" ng-value="item" ng-checked="item.radio = (currentItem === item)" /></td>
                         <td><input type="radio" ng-model="$parent.currentItem1" ng-value="item" ng-checked="item.radio1 = (currentItem1 === item)" /></td>
                         <td><input type="checkbox" ng-model="item.check" value=""/></td>
                         @*<td><select  name="mySelect" id="mySelect" ng-options="option.text for option in m.options track by option.nid"  ng-model="$parent.selectedOption"></select></td>*@
@@ -37,10 +43,10 @@ options:
 
 items:
 <code>{{m.items|json}}</code>
-<hr />     
+<hr>     
 currentItem:
 <code>{{currentItem|json}}</code>
-<hr />
+<hr>
 reverse:<code>{{reverse|json}}</code>
 order:<code>{{order|json}}</code>
 </pre>
