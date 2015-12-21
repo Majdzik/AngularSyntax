@@ -37,6 +37,20 @@ namespace AngularApp.Controllers
             return View();
         }
 
+        public ActionResult Bootstrap()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Foundation()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
         public ActionResult Route()
         {
             ViewBag.Message = "Your contact page.";

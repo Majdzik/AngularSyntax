@@ -1,0 +1,82 @@
+﻿
+
+<!DOCTYPE html>
+
+<html ng-app="app">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_LayoutFoundation</title>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/zurb/foundation-apps-1.2.0.css">
+    @*<link rel="stylesheet" href="http://cdn.jsdelivr.net/zurb/foundation-apps-1.2.0.min.css">*@
+
+   
+</head>
+<body>
+
+    @RenderBody()
+    @Scripts.Render("~/s/a")
+    <script src="http://cdn.jsdelivr.net/zurb/foundation-apps-1.2.0.js"></script>
+    @*<script src="http://cdn.jsdelivr.net/zurb/foundation-apps-1.2.0.min.js"></script>*@
+    <script src="http://cdn.jsdelivr.net/zurb/foundation-apps-templates-1.2.0.js"></script>
+    @*<script src="http://cdn.jsdelivr.net/zurb/foundation-apps-templates-1.2.0.min.js"></script>*@
+    <script>
+        (function () {
+            'use strict';
+            angular.module('app', [
+                    // Angular libraries
+                    'ui.router',
+                    'ngAnimate',
+                    // Foundation UI components
+                    'foundation',
+                    // Routing with front matter
+                    'foundation.dynamicRouting',
+                    // Transitioning between views
+                    'foundation.dynamicRouting.animations'
+            ])
+                .config(config)
+                .run(run);
+            config.$inject = ['$urlRouterProvider', '$locationProvider'];
+
+            function config($urlProvider, $locationProvider) {
+                // Default to the index view if the URL loaded is not found
+                $urlProvider.otherwise('/');
+                // Use this to enable HTML5 mode
+                $locationProvider.html5Mode({
+                    enabled: false,
+                    requireBase: false
+                });
+                // Use this to set the prefix for hash-bangs
+                // Example: example.com/#!/page
+                $locationProvider.hashPrefix('!');
+            }
+
+            function run() {
+                // Enable FastClick to remove the 300ms click delay on touch devices
+                FastClick.attach(document.body);
+            }
+        })();
+        (function () {
+            'use strict';
+
+            // imports all components and dependencies under a single namespace
+
+            angular.module('foundation', [
+              'foundation.core',
+              'foundation.mediaquery',
+              'foundation.accordion',
+              'foundation.actionsheet',
+              'foundation.common',
+              'foundation.iconic',
+              'foundation.interchange',
+              'foundation.modal',
+              'foundation.notification',
+              'foundation.offcanvas',
+              'foundation.panel',
+              'foundation.popup',
+              'foundation.tabs'
+            ]);
+
+        })();
+    </script>
+</body>
+</html>

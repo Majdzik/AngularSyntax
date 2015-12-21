@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="app">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_LayoutBootstrap</title>
+    @Styles.Render("~/c/bootstrap")
+    
+</head>
+<body>
+@RenderBody()
+    @Scripts.Render("~/s/a")
+    <script src="https://cdn.jsdelivr.net/angular.bootstrap/0.13.3/ui-bootstrap.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/angular.bootstrap/0.13.3/ui-bootstrap.min.js"></script>*@
+    <script src="https://cdn.jsdelivr.net/angular.bootstrap/0.13.3/ui-bootstrap-tpls.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/angular.bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script>*@
+<script>
+    angular.module('app', ['ui.bootstrap']);
+</script>
+</body>
+</html>
