@@ -1,4 +1,4 @@
-﻿(function() {
+﻿(function () {
     'use strict';
     var controllerId = 'mainController';
     angular.module('myApp').controller(controllerId, ['$scope', mainController]);
@@ -37,3 +37,64 @@
 
     //delete mainController();
 })();;
+
+(function () {
+    'use strict';
+    var app = angular.module('myApp'),
+        controllerId = '';
+
+    app.directive('table', function($compile) {
+
+    });
+
+    app.directive('item', function ($compile) {
+        function createTdElement(directive) {
+            var table = angular.element('<table><tr><td ' + directive + '></td></tr></table>');
+            return table.find('td');
+        }
+
+        function render(element, scope) {
+            var column, html, i;
+            for (i = 0; i < scope.columns.length; i++) {
+                column = scope.columns[i];
+                if (column.visible) {
+                    html = $compile(createTdElement('column'))(scope);
+                    element.append(html);
+                }
+            }
+        }
+
+        return {
+            restrict: 'A',
+            scope: {
+                item: '=',
+                columns: '='
+            },
+            controller: function ($scope, $element) {
+                $scope.$watch(function () {
+                    return $scope.columns;
+                }, function (newvalue, oldvalue) {
+                    if (newvalue !== oldvalue) {
+                        $element.children().remove();
+                        render($element, $scope);
+                        $compile($element.contents())($scope);
+                    }
+                }, true);
+            },
+            compile: function () {
+                return function (scope, element) {
+                    render(element, scope);
+                }
+
+            }
+        };
+
+    });
+
+    app.directive('column', function () {
+        return {
+            restrict: 'A',
+            template: '{{item.id}}'
+        }
+    });
+})

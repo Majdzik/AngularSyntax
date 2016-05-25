@@ -1051,6 +1051,7 @@
     <Content Include="Views\Shared\_LayoutFoundation.cshtml" />
     <Content Include="Views\Home\Foundation.cshtml" />
     <Content Include="Views\Home\Bootstrap.cshtml" />
+    <Content Include="Views\Shared\TableComponent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
