@@ -66,7 +66,7 @@ namespace AngularApp.Controllers
                     .Where(m => !m.GetCustomAttributes(typeof(System.Runtime.CompilerServices.CompilerGeneratedAttribute), true).Any())
                     .Select(x =>  new Route
                     {
-                         Attr =   x.CustomAttributes?.Where(f=>f.ConstructorArguments.Count>0 )?.Select(f=>f.ConstructorArguments.FirstOrDefault(i => i.ArgumentType.Name == "Route"))?.SingleOrDefault().Value,
+                         Attr =   x.CustomAttributes,
                         Controller = x.DeclaringType.Name.Replace("Controller",""),
                         Action = x.Name,
                         ReturnType = x.ReturnType.Name,

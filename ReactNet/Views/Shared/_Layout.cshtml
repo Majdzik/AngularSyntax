@@ -61,5 +61,11 @@
         <script src="~/jsx/First.jsx"></script>
         @Html.ReactInitJavaScript()
         @RenderSection("scripts", required: false)
+        <script>
+    /*
+    Debug tool (https://kentcdodds.com/ng-stats/)
+    */
+    (function () { var a = document.createElement("script"); a.src = "https://rawgit.com/kentcdodds/ng-stats/master/dist/ng-stats.js"; a.onload = function () { window.showAngularStats({ "position": "bottomright", "digestTimeThreshold": 16, "autoload": true, "logDigest": true, "logWatches": true }) }; document.head.appendChild(a) })();
+        </script>
     }
 </body></html>
