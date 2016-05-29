@@ -22,16 +22,34 @@
 
 
             </td>
+            <td>
+                @{
+
+                    //(((AngularApp.Controllers.Route)item).Attr).Items[0].ConstructorArguments
+                    foreach (dynamic a in item.Attr)
+                    {
+                        foreach (dynamic c in a.ConstructorArguments)
+                        {
+                                <span>@c.Value</span>
+                            }
+                    }
+
+
+
+                }
+                @*@(item.attr.Count() > 0 ? item.attr[0].ConstructorArguments[0].Value : "")*@
+
+            </td>
             <td>/</td>
             <td>@Html.ActionLink((string)item.Action, (string)item.Action, (string)item.Controller)</td>
             <td>@item.Attributes </td>
             <td>@item.ReturnType</td>
         </tr>
-    }
+                    }
 </table>
 
 <code>
-   
+
     $routeProvider
     @foreach (var item in Model)
     {
@@ -41,9 +59,9 @@
             <br>controller: '@(item.Controller)Controller',})
         </p>
         @*@item.Controller
-        @item.Action
-        @item.Attributes
-        @item.ReturnType*@
+            @item.Action
+            @item.Attributes
+            @item.ReturnType*@
     }
 
 </code>
