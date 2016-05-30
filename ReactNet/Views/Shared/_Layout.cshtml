@@ -57,8 +57,8 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script></environment>
         @*<!-- Load all your scripts normally before calling ReactInitJavaScript -->
         <!-- Assumes minification/combination is configured as per previous section -->*@
-        <script src="https://fb.me/react-0.14.0.min.js"></script>
-        <script src="https://fb.me/react-dom-0.14.0.min.js"></script>
+        @*<script src="https://fb.me/react-0.14.0.min.js"></script>
+        <script src="https://fb.me/react-dom-0.14.0.min.js"></script>*@
         <script src="~/jsx/First.jsx"></script>
         @Html.ReactInitJavaScript()
         @RenderSection("scripts", required: false)
