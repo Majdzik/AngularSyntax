@@ -1,0 +1,17 @@
+﻿{
+  "compilerOptions": {
+    "outDir": "./wwwroot/Built",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react"
+  },
+  "files": [
+    "./typings/index.d.ts",
+    "./App/jsx/File.tsx",
+    "./App/jsx/index.tsx"
+  ]
+}

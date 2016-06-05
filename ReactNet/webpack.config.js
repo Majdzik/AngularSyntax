@@ -4,24 +4,51 @@ var CommonsChunkPlugin = require('./node_modules/webpack/lib/optimize/commonschu
 
 module.exports = {
     context: path.join(__dirname, 'App'),
-    entry: './main',
+    //entry: './main',
+    entry: {
+        app:'./jsx/index.tsx'  ,
+        'commons.js':'./jsx/commons.js'
+    },
     output: {
         path: path.join(__dirname + '/wwwroot/', 'Built'),
         filename: '[name].bundle.js',
-        chunkFilename: "[id].chunk.js"
+        chunkFilename: '[id].chunk.js'
     }, plugins: [
       new WebpackNotifierPlugin(),
-      new CommonsChunkPlugin({ filename: "commons.js", name: "commons" })
+      new CommonsChunkPlugin({ filename: 'commons.js', name: 'commons' })
     ],
+
+    // Enable sourcemaps for debugging webpack's output.
+    devtool: 'source-map',
+
+    resolve: {
+        // Add '.ts' and '.tsx' as resolvable extensions.
+        extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+    },
+
     module: {
         loaders: [
             //{ test: /\.js$/, loader: 'script' },
-            { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
+            { test: /\.js$/, loader: 'babel', exclude: /(node_modules|bower_components)/ },
             //{ test: path.join(__dirname, 'es6'), loader: 'babel-loader' },
-            { test: /\.scss$/, loaders: ["style", "css", "sass"] },
+            { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
             //{ test: /\.css$/, loader: 'style!css' },
-            { test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.eot$/, loader: 'url' }
+            { test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.eot$/, loader: 'url' },
+
+            // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
+            { test: /\.tsx?$/, loader: 'ts-loader' },
+            //{ test: /\.jsx?$/, loader: 'babel', query: { presets: ['es2015'] }, exclude: /(node_modules|bower_components)/}
         ]
     },
     //sassLoader: { includePaths: [path.resolve(__dirname, "./Content")]}
+
+    // When importing a module whose path matches one of the following, just
+    // assume a corresponding global variable exists and use that instead.
+    // This is important because it allows us to avoid bundling all of our
+    // dependencies, which allows browsers to cache those libraries between builds.
+    externals: {
+        "react": "React",
+        "react-dom": "ReactDOM"
+    }
 };
+

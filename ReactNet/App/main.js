@@ -4,7 +4,9 @@ import foo from './foo';
 foo.bar();
 
 //require('../Content/main.css');
-require('../node_modules/react/react.js');
-require('../node_modules/angular/angular.js');
+require('./jsx/File.tsx');
+require('react');
+require('angular');
 require('./entry.js');
 alert('Hello World');    
+
